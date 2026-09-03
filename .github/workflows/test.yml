@@ -9,4 +9,5 @@ jobs:
       image: public.ecr.aws/lambda/python:3.13
     steps:
       - run: pip install -t python simple-salesforce
+      - run: dnf install zip
       - run: zip -r layer.zip python
