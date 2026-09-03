@@ -3,10 +3,20 @@ name: Build layer
 on: push
 
 jobs:
-  default:
-    runs-on: ubuntu-24.04-arm
+  build:
+    strategy:
+      matrix:
+        platform:
+          - runner: ubuntu-24.04
+            arch: x86_64
+          - runner: ubuntu-24.04-arm
+            arch: arm64
+        python:
+          - 3.12
+          - 3.13
+    runs-on: ${{ matrix.platform.runner }}
     container:
-      image: public.ecr.aws/lambda/python:3.13
+      image: public.ecr.aws/lambda/python:${{ python }}
     steps:
       - run: pip install -t python simple-salesforce
       - run: dnf -y install zip
