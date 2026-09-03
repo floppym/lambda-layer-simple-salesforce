@@ -16,7 +16,7 @@ jobs:
           - 3.13
     runs-on: ${{ matrix.platform.runner }}
     container:
-      image: public.ecr.aws/lambda/python:${{ python }}
+      image: public.ecr.aws/lambda/python:${{ matrix.python }}
     steps:
       - run: pip install -t python simple-salesforce
       - run: dnf -y install zip
