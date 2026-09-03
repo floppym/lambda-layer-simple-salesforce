@@ -8,4 +8,5 @@ jobs:
     container:
       image: public.ecr.aws/lambda/python:3.13
     steps:
-      - run: python3 --version
+      - run: pip install -t python simple-salesforce
+      - run: zip -r layer.zip python
