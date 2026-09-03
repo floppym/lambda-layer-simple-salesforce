@@ -8,5 +8,4 @@ jobs:
     container:
       image: public.ecr.aws/lambda/python:3.13
     steps:
-      - run: echo "$PATH"
-      - run: find /opt
+      - run: python3 --version
