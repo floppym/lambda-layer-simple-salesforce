@@ -15,11 +15,13 @@ jobs:
           - 3.12
           - 3.13
           - 3.14
+        package:
+          - simple-salesforce-1.12.10
     runs-on: ${{ matrix.platform.runner }}
     container: public.ecr.aws/lambda/python:${{ matrix.python }}
     steps:
-      - run: pip install -t image/python simple-salesforce
+      - run: pip install -t image/python ${{ package }}
       - uses: actions/upload-artifact@v7
         with:
-          name: simple-salesforce-py${{ matrix.python }}-${{ matrix.platform.arch }}
+          name: ${{ package }}-${py${{ matrix.python }}-${{ matrix.platform.arch }}
           path: image
