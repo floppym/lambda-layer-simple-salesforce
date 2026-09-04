@@ -20,5 +20,6 @@ jobs:
       image: public.ecr.aws/lambda/python:${{ matrix.python }}
     steps:
       - run: pip install -t python simple-salesforce
-      - run: dnf -y install zip
-      - run: zip -r layer.zip python
+      - uses: actions/upload-artifact@v7
+        with:
+          path: python
