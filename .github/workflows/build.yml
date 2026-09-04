@@ -12,7 +12,6 @@ jobs:
           - runner: ubuntu-24.04-arm
             arch: arm64
         python:
-          - 3.12
           - 3.13
           - 3.14
         version:
@@ -23,5 +22,5 @@ jobs:
       - run: pip install -t image/python 'simple-salesforce == ${{ matrix.version }}'
       - uses: actions/upload-artifact@v7
         with:
-          name: simple-salesforce-${{ matrix.version }}-${py${{ matrix.python }}-${{ matrix.platform.arch }}
+          name: simple-salesforce-${{ matrix.version }}-py${{ matrix.python }}-${{ matrix.platform.arch }}
           path: image
