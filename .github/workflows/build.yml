@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.platform.runner }}
     container: public.ecr.aws/lambda/python:${{ matrix.python }}
     steps:
-      - run: pip install -t image/python simple-salesforce-${{ matrix.version }}
+      - run: pip install -t image/python 'simple-salesforce == ${{ matrix.version }}'
       - uses: actions/upload-artifact@v7
         with:
           name: simple-salesforce-${{ matrix.version }}-${py${{ matrix.python }}-${{ matrix.platform.arch }}
