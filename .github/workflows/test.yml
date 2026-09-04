@@ -22,5 +22,5 @@ jobs:
       - run: pip install -t python simple-salesforce
       - uses: actions/upload-artifact@v7
         with:
-          name: simple-salesforce-py{{ matrix.python }}-${{ matrix.arch }}
+          name: simple-salesforce-py${{ matrix.python }}-${{ matrix.arch }}
           path: python
